@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>신호등 주기 조절</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script defer src="sketch.js"></script>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .slider-container {
+            margin: 20px 0;
+        }
+        .traffic-light-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .traffic-light {
+            width: 80px;
+            height: 200px;
+            background: black;
+            padding: 10px;
+            border-radius: 10px;
+        }
+        .light {
+            width: 60px;
+            height: 60px;
+            margin: 10px auto;
+            border-radius: 50%;
+            background: gray;
+        }
+        button {
+            margin: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>신호등 주기 조절</h1>
+    <button onclick="connectToArduino()">아두이노 연결</button>
+    <p id="connectionStatus">현재 상태: 연결되지 않음</p>
+
+    <div class="slider-container">
+        <label for="redSlider">빨간불 주기:</label>
+        <input type="range" id="redSlider" min="100" max="3000" step="100" value="1000" oninput="updateCycle('red')">
+        <span id="redCycle">1000 ms</span>
+    </div>
+    <div class="slider-container">
+        <label for="yellowSlider">노란불 주기:</label>
+        <input type="range" id="yellowSlider" min="100" max="3000" step="100" value="500" oninput="updateCycle('yellow')">
+        <span id="yellowCycle">500 ms</span>
+    </div>
+    <div class="slider-container">
+        <label for="greenSlider">초록불 주기:</label>
+        <input type="range" id="greenSlider" min="100" max="3000" step="100" value="1500" oninput="updateCycle('green')">
+        <span id="greenCycle">1500 ms</span>
+    </div>
+
+    <div class="traffic-light-container">
+        <div class="traffic-light">
+            <div id="redLight" class="light"></div>
+            <p>빨간불</p>
+        </div>
+        <div class="traffic-light">
+            <div id="yellowLight" class="light"></div>
+            <p>노란불</p>
+        </div>
+        <div class="traffic-light">
+            <div id="greenLight" class="light"></div>
+            <p>초록불</p>
+        </div>
+    </div>
+</body>
+</html>
