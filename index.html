@@ -4,24 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>신호등 주기 조절</title>
+
+    <!-- p5.js 라이브러리 로드 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
     <script defer src="sketch.js"></script>
+
     <style>
+        /* 기본적인 스타일 설정 */
         body {
             text-align: center;
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
         }
+
+        /* 슬라이더 컨테이너 스타일 */
         .slider-container {
             margin: 20px 0;
         }
+
+        /* 신호등 컨테이너 스타일 */
         .traffic-light-container {
             display: flex;
             justify-content: center;
             gap: 20px;
             margin-top: 20px;
         }
+
+        /* 신호등 박스 스타일 */
         .traffic-light {
             width: 80px;
             height: 200px;
@@ -29,13 +39,17 @@
             padding: 10px;
             border-radius: 10px;
         }
+
+        /* 신호등 불빛 스타일 */
         .light {
             width: 60px;
             height: 60px;
             margin: 10px auto;
             border-radius: 50%;
-            background: gray;
+            background: gray; /* 기본적으로 꺼진 상태 */
         }
+
+        /* 버튼 스타일 */
         button {
             margin: 20px;
             padding: 10px 20px;
@@ -45,34 +59,47 @@
 </head>
 <body>
     <h1>신호등 주기 조절</h1>
+
+    <!-- 아두이노 연결 버튼 -->
     <button onclick="connectToArduino()">아두이노 연결</button>
     <p id="connectionStatus">현재 상태: 연결되지 않음</p>
 
+    <!-- 빨간불 주기 조절 슬라이더 -->
     <div class="slider-container">
         <label for="redSlider">빨간불 주기:</label>
         <input type="range" id="redSlider" min="100" max="3000" step="100" value="1000" oninput="updateCycle('red')">
         <span id="redCycle">1000 ms</span>
     </div>
+
+    <!-- 노란불 주기 조절 슬라이더 -->
     <div class="slider-container">
         <label for="yellowSlider">노란불 주기:</label>
         <input type="range" id="yellowSlider" min="100" max="3000" step="100" value="500" oninput="updateCycle('yellow')">
         <span id="yellowCycle">500 ms</span>
     </div>
+
+    <!-- 초록불 주기 조절 슬라이더 -->
     <div class="slider-container">
         <label for="greenSlider">초록불 주기:</label>
         <input type="range" id="greenSlider" min="100" max="3000" step="100" value="1500" oninput="updateCycle('green')">
         <span id="greenCycle">1500 ms</span>
     </div>
 
+    <!-- 신호등 표시 컨테이너 -->
     <div class="traffic-light-container">
+        <!-- 빨간불 신호 -->
         <div class="traffic-light">
             <div id="redLight" class="light"></div>
             <p>빨간불</p>
         </div>
+
+        <!-- 노란불 신호 -->
         <div class="traffic-light">
             <div id="yellowLight" class="light"></div>
             <p>노란불</p>
         </div>
+
+        <!-- 초록불 신호 -->
         <div class="traffic-light">
             <div id="greenLight" class="light"></div>
             <p>초록불</p>
