@@ -16,7 +16,7 @@ https://youtu.be/YhZ08HFGAOI
 | 5번    | `LED_RED`          | 빨간불                   |
 | 6번    | `LED_YELLOW`       | 노란불                   |
 | 7번    | `LED_GREEN`        | 초록불                   |
-| 8번    | `LED_BLINK`        | 전체 깜빡임 LED          |
+| 8번    | `LED_BLINK`        | 초록불 깜빡임           |
 | **버튼 핀** |                  |                         |
 | 2번    | `BUTTON_EMERGENCY` | 비상 정지 버튼 (긴급 모드 전환) |
 | 3번    | `BUTTON_RESET`     | 시스템 ON/OFF 버튼       |
