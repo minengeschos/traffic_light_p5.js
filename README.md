@@ -8,9 +8,9 @@ https://www.tinkercad.com/things/4AYjenSZ41s/editel
 
 RLED -> pin5
 
-GLED -> pin6
+YLED -> pin6
 
-BLED -> pin7, pin8
+GLED -> pin7, pin8
 
 
 
